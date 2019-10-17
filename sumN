@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+int sum1(int n)
+{
+  return n * (n+1)/2;
+  // mathematical method
+}
+
+int sum2(int n)
+{
+  int sum = 0;
+  for ( int i = 1; i < n +1;  ++i) 
+  {
+    sum += i;
+  } 
+  return sum;
+}
+int sum3(int n)
+{
+  if (n == 0) return 0;
+  return sum3(n-1)+n;
+}
+int main() {
+  int sum = 0;
+  sum = sum1(10);
+  printf("The method 1 sum is %d \n", sum);
+  sum = sum2(10);
+  printf("The method 2 sum is %d \n", sum);
+  sum = sum3(10);
+  printf("The method 3 sum is %d \n", sum);
+  return 0;  
+}

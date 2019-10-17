@@ -7,7 +7,7 @@ void funA(int n)
     funB(n-1);
   }
 }
-void main(int n) 
+void funB(int n) 
 {
   if (n > 1) {
     print("%d\n", n);

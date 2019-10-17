@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+void funB(int n);
 void funA(int n) 
 {
   if ( n > 0 ) {

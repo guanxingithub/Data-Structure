@@ -4,26 +4,54 @@ double e1(int x, int n)
 {
   // iteration
   double s = 1;
-  doulbe nom = 1;
-  double dem = 1;
+  doulbe p = 1;
+  double f = 1;
   
-  for(int i = 1; i < n; ++i) {
-    nom *=  x;
-    dem *=n;
-    s += nom/dem;
+  for(int i = 1; i < n+1; ++i) {
+    p *=  x;
+    f *= i;
+    s += p/f;
   }
   return s;
 }
 
 double e2(int x, int n)
 {
-  static doulbe s = 1;
+  static double s = 1;
   if (n==0) return s;
  
   s = 1 + s * x/n;
   return e2(x, n-1);
 }
 
+double e4(int x, int n)
+{
+  // iteration method
+  if (n == 0) return 1;
+  double r = 1;
+  while ( n > 0) {
+    r = 1 + r * x /n;
+    --n;
+  }
+  return r;
+}
+
+double e3(int x, int n)
+{
+  // recurssion method for e1
+  if (n==0) return 1;
+  
+  static double p = 1;
+  static double f = 1;
+  double r = 1;
+  
+  r = e3(x, n-1);
+  p *= x;
+  f *= n; 
+  return r + p/f;
+}
+  
+  
 int main() {
  double r;
  r = e(2,10);

@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+# method 1, use factorial
+
+int fact(int n) 
+{
+  if (n== 0 ) return 1;
+  return fact(n-1) * n;
+}
+
+int Cnr ( int n, int r) 
+{
+  if ( n < r ) return 0;
+  if ( r == 0 || r == n) return 1;
+  int f = fact(n);
+  int p = fact(n-r) * fact(r);
+  return (int) f/n;
+}
+
+int CNR(int n, int r);
+{
+  if (r == 0 || r == n) return 1;
+  if ( r > n-r ) return CNR(n, n-r); // half of timing
+  
+  return CNR(n-1, r) + CNR(n-1, r-1);
+}
+
+int main() {
+  int r;
+  r = CNR(5, 2);
+  printf("%d \n", r);
+  return 0;
+}

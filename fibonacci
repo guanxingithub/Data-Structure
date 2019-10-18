@@ -19,6 +19,24 @@ int fib2(int n) {
   return fib2(n-1) + fib2(n-2);
 }
 
+int F[10] = {-1};
+int fib3(int n) {
+  if (n < 2) {
+    // memorize the result;
+    F[n] = n; // memorization
+    return F[n];
+  } 
+  if ( F[n-1] == -1 ) {
+    F[n-1] = fib3(n-1);
+  }
+  if ( F[n-2] == -1 ) {
+    F[n-2] = fib3(n-2);
+  }
+  F[n] = F[n-1] + F[n-2]; // memorization
+  return F[n];
+}
+
+
 int main() {
   int r = 0;
   

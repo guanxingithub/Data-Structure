@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int main() 
+{
+  int A[5]= {1, 2, 3, 4, 5};
+  int i ;
+  for ( i = 0; i < 5; ++i) {
+    printf("%d \n", A[1]);
+    printf("%d \n", 1[A]);
+    printf("%d \n", *(A+1));
+  }
+  int B[5] = {1, 2, 3, 4, 5};
+  int C[5] = { 1, 2};   // 1, 2, 0, 0, 0
+  int D[5] = {0};   // al zeros
+  int E[] = {1, 2, 3, 4, 5}; // five element array
+}

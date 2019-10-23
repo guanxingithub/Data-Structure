@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 100
+struct Array 
+{
+  int A[N];
+  int size = N;
+  int length = 0;
+};
+
+void Display(struct Array arr)
+{
+  int i;
+  for ( i =0; i < arr.length; ++i) {
+    printf("%d ", arr.A[i]);
+  }
+  printf("\n");
+}
+
+void Insert(struct Array *arr, int index, index x)
+{
+  if ( index >= 0 && index < arr->length ) {
+     int j = arr->length;
+     while ( j > index ) {
+       arr->A[j] = arr->A[j-1];
+     }
+     arr->A[index] = x;
+     arr->length++;
+   }
+}
+
+void Append(struct Array *arr, int x)
+{
+  if ( arr->length < arr->size ) {
+    arr->A[length++] = x;
+  }
+}
+
+int main() 
+{
+  struct Array arr = { {1, 2, 3, 4, 5}, 10, 5};
+  
+  Display(arr);
+  Insert(&arr, 3, 2);
+  Display(arr);
+  Append(&arr, 10);
+  Display(arr);
+  return 0;
+}
+  

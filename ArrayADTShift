@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 100
+struct Array {
+  int A[N];
+  int size = N;
+  int length = 0;
+}
+void LeftShift(struct Array *arr)
+{
+  if ( arr->length == 0 ) return;
+  for ( int i = 0; i < length-1; i++) {
+    arr->A[i] = arr->A[i+1];
+  }
+  arr->length--;
+  return;
+}
+void Reverse(struct Array *arr) 
+{
+  struct Array *b = (struct Array *)malloc(sizeof(struct Array));
+  // or struct Array *b = new struct Array();
+  int n = arr->length ;
+  if (n <= 1 ) return;
+  for(int i = 0; i < n; i++) {
+    b->A[i] = arr->A[n-1-i];
+  }
+  for ( int i = 0; i < n; i++) {
+    arr->A[i]= b->A[i];
+  }
+  return;
+}
+void Reverse1(struct Array *arr) {
+  int n = arr->length;
+  if ( n <= 1) return;
+  for ( int i = 0; i < n/2; i++) {
+    arr->A[i] = arr->A[n-1-i];
+  }
+  return;
+}
+
+void LeftRotate(struct Array *arr)
+{
+  int n = arr->length;
+  if (n < 2) return;
+  int temp = arr->A[0];
+  for ( int  i = 0; i < n; i++) {
+    arr->A[i] = arr->A[i+1];
+  }
+  arr->A[length-1] = temp;
+  return;
+}
+    

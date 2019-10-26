@@ -8,13 +8,25 @@ struct Array {
 }
 void LeftShift(struct Array *arr)
 {
-  if ( arr->length == 0 ) return;
-  for ( int i = 0; i < length-1; i++) {
+  int n = arr->lenght;
+  if ( n == 0 ) return;
+  for ( int i = 0; i < n-1; i++) {
     arr->A[i] = arr->A[i+1];
   }
   arr->length--;
   return;
 }
+void RightShift(struct Array *arr)
+{
+  int n = arr->length;
+  if (n==0) return;
+  for(int i = n-1; i >=1 ; i--) {
+    arr->A[i] = arr->A[i-1];
+  }
+  arr->A[0] = 0;
+  return;
+}
+
 void Reverse(struct Array *arr) 
 {
   struct Array *b = (struct Array *)malloc(sizeof(struct Array));
@@ -49,4 +61,14 @@ void LeftRotate(struct Array *arr)
   arr->A[length-1] = temp;
   return;
 }
-    
+void RightRotate(struct Array *arr)
+{
+  int n = arr->length;
+  if ( n < 2 ) return;
+  int temp = arr->A[n-1];
+  for ( int i = n-1; i >0; i--) {
+    arr->A[i]= arr->A[i-1];
+  }
+  arr->A[0] = temp;
+  return;
+}

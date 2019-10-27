@@ -25,3 +25,29 @@ vector<int> findMissing1(vector<int> list)
   }
   return M;
 }
+vector<int> findMissing2(vector<int> list)
+{
+  // hash table idea
+  int min= list[0];
+  int max = list[0];
+  for (int i = 0; i < list.size(); i++) {
+    if ( list[i] < min) {
+      min = list[i];
+    } else if ( list[i] > max) {
+      max = list[i];
+    }
+  }
+  vector<int> H(max-min+1);
+  for ( int i = 0; i < H.size(); i++) {
+    H[i] = 0;
+  }
+  for ( int i = 0; i < list.size(); i++) {
+    H[list[i]-min] = 1;
+  }
+  for ( int i = 0; i < H.size(); i++) {
+    if ( H[i] == 0 ) {
+      result.push_back(i + min);
+    }
+  } 
+  return result;
+}

@@ -128,6 +128,48 @@ int Min(struct Array arr)
   }
   return min;
 }
+
+void ReArrange(struct Array *arr) {
+  int i = 0;
+  int j = arr->length-1;
+  while (i < j ) {
+    while ( arr->A[i] < 0 ) i++;
+    while ( arr->A[j] >= 0 ) j--;
+    if ( i < j ) {
+      swap(&arr->A[i], &arr->A[j]);
+    }
+  }
+}
+
+struct Array * Merge(struct Array A, struct Array B)
+{
+  struct Array *C;
+  C = (struct Array *) molloc(sizeof(struct Array));
+  C.size = A.size;
+  int m = A.length;
+  int n = B.length;
+  
+  int k= 0;
+  int i = 0;
+  int j= 0;
+  while ( i < m && j < n ) 
+  {
+    if(A.A[i] < B.A[j]) {
+      C.A[k++] = A.A[i++];
+    } else {
+      C.A[k++] = B.A[j++];
+    }
+  }
+  for ( ; i < m; i++) {
+    C.A[k++] = A.A[i];
+  }
+  for ( ; j < n; j++) {
+    C.A[k++] = B.A[j];
+  }
+  C.length = A.length + B.length;
+  
+}
+
 int Sum(struct Array arr)
 {
   int sum = 0;

@@ -93,6 +93,29 @@ int Max(struct Array arr)
   return max;
 }
 
+void InsertSort(struct Array *arr, int x)
+{
+  // try to find the location of the x in the sorted list
+  // started from the last element
+  int i = arr->length-1;
+  if ( arr->length == arr->size) return;
+  while ( i >= 0 && arr->A[i] > x ) {
+    arr->A[i+1] = arr->A[i];
+    i--;
+  }
+  A[i+1] = x;
+  arr->length++;
+  return;
+}
+
+bool isSorted(struct Array arr)
+{
+  int i;
+  for ( i = 0; i < arr.length-1; i++) {
+    if ( arr.A[i] > arr.A[i+1]) return false;
+  }
+  return true;
+}
 int Min(struct Array arr) 
 {
   if ( arr.length == 0 ) return 0;

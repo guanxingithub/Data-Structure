@@ -1,0 +1,47 @@
+#include<iostream>
+
+vector<int> findDuplicate(vector<int> list)
+{
+  int n = list.size();
+  if ( n < 2) return vector<int>();
+  vector<int> result;
+  
+  int min = list[0];
+  for (int i = 0; i < list.size(); i++) {
+    if (list[i] < min) min = list[i];
+  }
+  int lastDuplicate = min -1;
+  
+  for ( int i = 0; i < n-1; i ++) {
+    if ( list[i] == list[i+1] && list[i] != lastDuplicate) {
+      lastDuplicate = list[i];
+      result.push_back(lastDuplicate);
+    }
+  }
+  return result;
+}
+
+vector<pair<int, int>> findDuplicate(vector<int> list)
+{
+  int n = list.size();
+  if ( n < 2) return vector<int>();
+  vector<pair<int,int>> result;
+  
+  int min = list[0];
+  for (int i = 0; i < list.size(); i++) {
+    if (list[i] < min) min = list[i];
+  }
+  int lastDuplicate = min -1;
+  int j;
+  
+  for ( int i = 0; i < n-1; i ++) {
+    if ( list[i] == list[i+1] ) {
+      j = i +1;
+      while(list[j]== list[j+1]) j++;
+      pair<int,int> a(lastDuplicate, j-i+1);
+      lastDuplicate = list[i];
+      result.push_back(a);
+    }
+  }
+  return result;
+}

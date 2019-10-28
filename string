@@ -44,6 +44,19 @@ char *reverse(char *s)
   return result;
 }
 
+void reverse(char *s)
+{
+  int i;
+  for ( i = 0; s[i] != '\0'; i++) {}
+  i = i-1;
+  int j = 0;
+  while ( j < i ) {
+    s[j] = s[i-j];
+    i--;
+    j++;
+  }
+}
+
 int main() 
 {
   char *s = "John";

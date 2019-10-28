@@ -1,0 +1,45 @@
+#include<iostream>
+
+using namespace std;
+
+vector<pair<int, int>> 2Sum( vector<int> list, int key)
+{
+  int n = list.size();
+  
+  if ( n < 2 ) return vector<pair<int, int>>();
+  vector<pair<int, int>> result;
+  
+  for ( int i = 0; i < n-1; i++) 
+  {
+    for (int j = i +1; j < n; j++) {
+      if ( list[i] + list[j] == key) {
+        pair<int, int> a(list[i], list[j]);
+        // if ( find(result.begin(), result.end(), a) != result.end()) 
+        result.push_back(a);
+        continue;
+      }
+  }
+  return result;
+}
+
+vector<pair<int, int>> 2sum(vector<int> list, int key)
+{
+  int n = list.size();
+  if ( n < 2 ) return vector<pair<int, int>>();
+  int min = list[0];
+  int max = list[1];
+  for ( int i = 0; i < n; i++) {
+    if ( list[i] < min) min = list[i];
+    if ( list[i] > max) max = list[i];
+  }
+  // create a hash table
+  vector<int> hash(max-min+1);
+  for ( int i = 0; i < n; i++) {
+    if ( hash[key-list[i]] > 0 ) {
+      pair<int, int> a(list[i], key-list[i]);
+      result.push_back(a);
+    }
+    hash[list[i]]++;
+  }
+  return result;
+}

@@ -117,3 +117,19 @@ int main()
   cout << "Total words is " <<< wcount+1 << endl;
   return 0;
 }
+
+void findDuplicate(char *s)
+{
+  int i;
+  vector<int> hash(127);
+  
+  for ( i = 0; s[i] != '\0'; s++) {
+    hash[s[i]]++;
+  }
+  for ( i = 0; i < hash.size(); i++) {
+    if (hash[i] > 1) {
+      printf("( %c, %d )", i, hash[i]);
+    }
+  }
+  return;
+}

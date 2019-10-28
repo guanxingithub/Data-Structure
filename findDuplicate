@@ -39,6 +39,10 @@ vector<pair<int, int>> findDuplicate(vector<int> list)
       j = i +1;
       while(list[j]== list[j+1]) j++;
       pair<int,int> a(lastDuplicate, j-i+1);
+      // another way
+      // pair<int, int> a;
+      // a.first = lastDuplicate;
+      // a.second = j-i +1;
       lastDuplicate = list[i];
       result.push_back(a);
     }

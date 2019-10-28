@@ -45,3 +45,63 @@ vector<pair<int, int>> findDuplicate(vector<int> list)
   }
   return result;
 }
+
+// using hashing table
+
+vector<int> findDuplicateHash(vector<int> list)
+{
+  int n = list.size();
+  if ( n < 2) return vector<int>();
+  
+  int min = list[0];
+  int max = list[0];
+  for ( int i =  0; i < n; i++) {
+    if ( list[i] < min ) min = list[i];
+    if ( list[i] > max ) max = list[i];
+  }
+  vector<int> hashing(max-min+1);
+  
+  for ( int i = 0; i < hasing.size(); i++) {
+    hasing[i] = 0;
+  }
+  
+  for ( int i = 0; i < n; i++) {
+    hashing[list[i]]++;
+  }
+  vector<int> result;
+  for ( int i = 0; i < hashing.size(); i++) {
+    if ( hashing[i] > 1 ) {
+      result.push_back(i + min);
+    }
+  }
+  return result;
+}
+vector<pair<int, int> >findDuplicateHash(vector<int> list)
+{
+  int n = list.size();
+  if ( n < 2) return vector<pair<int, int>>();
+  
+  int min = list[0];
+  int max = list[0];
+  for ( int i =  0; i < n; i++) {
+    if ( list[i] < min ) min = list[i];
+    if ( list[i] > max ) max = list[i];
+  }
+  vector<int> hashing(max-min+1);
+  
+  for ( int i = 0; i < hasing.size(); i++) {
+    hasing[i] = 0;
+  }
+  
+  for ( int i = 0; i < n; i++) {
+    hashing[list[i]]++;
+  }
+  vector<int> result;
+  for ( int i = 0; i < hashing.size(); i++) {
+    if ( hashing[i] > 1 ) {
+      pair<int,int> a(i +min, hashing[i]);
+      result.push_back(a);
+    }
+  }
+  return result;
+}

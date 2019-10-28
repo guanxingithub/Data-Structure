@@ -133,3 +133,21 @@ void findDuplicate(char *s)
   }
   return;
 }
+
+void checkDuplicate(char *s)
+{
+  // the same ideas as hash table, but this time uses bitwise operations
+  // first find the enough space for hash table
+  double H = 0;
+  int i;
+  for ( i = 0; s[i] != '\0'; i++) {
+    x = 1;
+    x = x<< s[i];
+    if ( H & x ) {
+      // find the duplicate one
+      printf("%c is found at least twice\n", s[i]);
+    } else {
+      H = H | x;
+    }
+  }
+}

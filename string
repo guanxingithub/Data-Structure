@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() 
+{
+  char *s = "John";
+  for ( int i = 0; s[i]!='\0'; i++) {}
+  printf("The lenght of word is %d", i);
+  return 0;
+}

@@ -52,17 +52,27 @@ int main() {
  template<T>
  class Matrix<T> {
  private:
-   T A[10];
+   T * A;
    int n;
  public:
+   Matrix(int n);
+   ~Matrix() {
+     delete []A;
+   }
    void Set(int i, int j, T x);
    T Get (int i, int j);
    void Display();
  };
- 
+ template<T>
+ void Matrix<T>::Matrix(int i)
+ {
+   n = i;
+   A = new T[i];
+ }
  template<T>
  void Matrix<T>::Set(int i, int j, T x)
  {
+   if ( i > n ) return;
    if ( i == j ) A[i-1] = x;
  }
  template<T>

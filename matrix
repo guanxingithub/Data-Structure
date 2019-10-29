@@ -116,6 +116,7 @@ public:
  void set(int i, int j, int x, bool rawMajor = true);
  int get(int i, int j, bool rawMajor = true);
  void Display(bool rawMajor = true);
+ int getDimension() { return n; }
 }
 
 void Matrix::set(int i, int j, int x)
@@ -124,7 +125,7 @@ void Matrix::set(int i, int j, int x)
     if ( rowMajor) {
       A[i(i-1)/2 + j -1] = x;
     } else {
-      A[n * (j-1 ) + (j-1)(j-2)/2 + i - j] = x;
+      A[n * (j-1 ) - (j-1)(j-2)/2 + i - j] = x;
     }
   }
 }
@@ -134,7 +135,7 @@ int Matrix::get(int i, int j, bool rowMajor)
      if ( rowMajor) {
        return A[i * ( i-1)/2 + j -1];
      } else {
-       return A[ n * j + (j-1)*(j-2)/2 + i -j];
+       return A[ n * j - (j-1)*(j-2)/2 + i -j];
      }
    } else {
      return 0;
@@ -150,7 +151,7 @@ int Matrix::get(int i, int j, bool rowMajor)
          if ( rowMajor) {
            cout << A[i * (i-1)/2 + j -1] << " " ;
          } else {
-           cout << A[n * (j-1) + (j-1) * (j-2)/2 + i -j];
+           cout << A[n * (j-1) - (j-1) * (j-2)/2 + i -j];
          }
        } else {
          cout << "0 ";

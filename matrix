@@ -161,4 +161,48 @@ int Matrix::get(int i, int j, bool rowMajor)
    }
  }
  
-    
+ class UTM
+ {
+ private:
+   int *A;
+   int n;
+   bool rowMajor= true;
+ public:
+   UTM() { 
+     n = 10;
+     A = new int[n*(n+1)/2];
+   }
+   UTM() (int n) : rowMajor(true)
+   {
+     this->n = n;
+     A = new int[n*(n+1)/2];
+   }
+ 
+   ~UTM() { delete []A; }
+   void set(int i, int j, int x);
+   int get(int i, int j);
+   void Display();
+ }
+ 
+ void UTM::set(int i, int j, int x) 
+ {
+   if ( i <= j ) {
+     if (rowMajor) {
+       A[n * (i-1) - (i-1)*(i-2)/2 + j -i] = x;
+     } else {
+       A[j * ( j-1) /2 + j - i] = x;
+     }
+   }
+ }
+ int get(int i, int j) 
+ {
+   if ( i <= j ) {
+     if (rowMajor) {
+       return A[n*(i-1) - (i-1)*(i-2)/2 + j -i];
+     else {
+       return A[j*(j-1)/2 + i -1];
+     }
+   } else {
+     return 0;
+   }
+ }

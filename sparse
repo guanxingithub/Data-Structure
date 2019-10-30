@@ -45,7 +45,7 @@ struct Sparse * add(struct Sparse *s1, struct Sparse *s2)
   sum->row = s1->row;
   sum->col = s1->col;
   sum->e = new Element[s1->num + s2->num];
-  // or sum->e = (struct Element *) malloc(sizeof(Element) * (s1->num + s2->num));
+  // or sum->e = (struct Element *) malloc(sizeof(struct Element) * (s1->num + s2->num));
   int i = 0; // trace s1
   int j = 0; // trace s2
   int k = 0;

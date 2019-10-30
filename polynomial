@@ -57,3 +57,16 @@ struct Poly * add(struct Poly P1, struct Poly P2)
   sum->n = k;
   rturn sum;
 }
+
+int main()
+{
+  struct Poly P1, P2, *P3;
+  
+  create(&P1);
+  create(&P2);
+  p3 = add(&P1, &P2);
+  display(P1);
+  display(P2);
+  display(*P3);
+  return 0;
+}

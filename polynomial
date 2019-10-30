@@ -1,0 +1,57 @@
+#include < stdio.h>
+#include <stdlib.h>
+
+struct Term
+{
+  int coef;
+  int exp;
+};
+
+struct Poly
+{
+  int n;
+  struct Term *t;
+}
+
+void create(struct Poly * P)
+{
+  printf("Enter the terms\n");
+  scanf("%d", &P->n);
+  P->t = (struct Term*)malloc(sizeof(struct Term) * P->n);
+  for (int i = 0; i < P->n; i++) {
+    scanf("%d%d", &P->t[i].coef, &P->t[i].exp);
+  }
+}
+void display(struct Poly P)
+{
+  int i, j;
+  for ( i= 0; i < P.n; i++) {
+    printf("%d x^%d + ", P.t[i].coef, P.t[i].exp);
+  }
+}
+
+struct Poly * add(struct Poly P1, struct Poly P2)
+{
+  struct Poly *sum;
+  sum->t = (struct Term *) molloc(sizeof(struct Term)*(P1.n + P2.n));
+  int i, j, k;
+  i = j = k = 0;
+  while ( i < P1.n && j < P2.n ) {
+    if ( P1.t[i].exp > P2.t[j].exp ) {
+      sum->t[k++] = P1.t[i++];
+    } else if (P1.t[i].exp < P2.t[j].exp ) {
+      sum->t[k++] = P2.t[j++];
+    } else {
+      sum->t[k].exp = P1.t[i].exp;
+      sum->t[k++].x = P1.t[i++].x + P2.t[j++].x;
+    }
+  }
+  for ( ; i < P1.n; i++) {
+    sum->[k++] = P1.t[i++];
+  }
+  
+   for ( ; j < P1.n; j++) {
+    sum->[k++] = P2.t[j++];
+  }
+  rturn sum;
+}

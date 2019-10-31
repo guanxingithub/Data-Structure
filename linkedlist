@@ -272,6 +272,28 @@ void RReverse(struct Node *q, struct Node *p)
  first = q;
 }
 
+void ReverseByElements(struct Node *p)
+{
+  int n = count(p);
+  int *A;
+  A = (int *)malloc(sizeof(int) * n);
+  int i = 0;
+  while (p) 
+  {
+    A[i++] = p->data;
+    p = p->next;
+  }
+  i--;
+  while (p)
+  {
+    p->data = A[i--];
+    p = p->next;
+  }
+} // this is not the good one
+  // 1. if the data is very large, this method needs a lot of memory
+  // 2. in the real project, these data could be used somewhere else, so if the data is changed, 
+  //that will produce the reverse effect
+    
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

@@ -77,25 +77,22 @@ int Rsum(struct Node *P)
 
 int max(struct Node *p)
 {
-  if (!p) return 0;
-  int max = p->data;
-  p = p->next;
+  int max = MIN_INT;
   while(p)
   {
     if (p->data > max ) max = p->data;
     p = p->next;
   }
-  return p;
+  return max;
 }
 
-int max(struct Node *p)
+int Rmax(struct Node *p)
 {
-  if (!p) return 0;
-  if (p && p->next == NULL) return p->data;
+  if (!p) return MIN_INT;
   int max = p->data;
   int new = max(p->next);
   if ( max < new ) max = new;
-  return new;
+  return max;
 }
 
 int main() 

@@ -131,14 +131,19 @@ struct Node *Rsearch(struct Node *p, int key)
 
 void Insert(struct Node *p, int pos, int x)
 {
+  
   struct Node *t = (struct Node *) malloc(sizeof(struct Node));
   struct Node *q = NULL;
   t->data = x;
   t->next = NULL;
   if (pos == 0 ) {
     // insert before the first
-    t->next = first->next;
-    first = t;
+    if ( first == NULL) {
+      first = t;
+    } else {
+      t->next = first->next;
+      first = t;
+    }
   } else {
     for(int i = 0; i < pos-1 && p ; i++)
     {
@@ -152,6 +157,44 @@ void Insert(struct Node *p, int pos, int x)
     }  
   }
 }
+void InsertLast(int x)
+{
+  struct Node * last, *t;
+  t = (struct Node *) molloc(sizeof(struct Node));
+  t->data = x;
+  t->next = NULL;
+  if ( first == NULL){
+    first = last = t;
+  } else {
+    last->next = t;
+    last = t;
+  }
+}
+void InsertSorted(struct Node *p, int x)
+{
+  struct Node *t = (struct Node*) malloc(struct Node));
+  t->data = x;
+  t->next = NULL;
+  struct Node *q = NULL;
+  if ( first == NULL) {
+    first = t;
+  } else {
+    while( p && p->data < x ) 
+   {
+      q = p;
+      p = p->next;
+    }
+    if ( p == first ) {
+      t->next = first;
+      first = t;
+    } else {
+      t->next = q->next;
+      q->next = t;
+    }
+   }
+  }
+}
+    
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

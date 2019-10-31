@@ -194,7 +194,43 @@ void InsertSorted(struct Node *p, int x)
    }
   }
 }
-    
+void Delete(int x)
+{
+  if(first == NULL) return;
+  struct Node *p, *q;
+  p = q = first;
+  while ( p && p->data != x) {
+    q = p;
+    p = p->next;
+  }
+  if ( p == first ) {
+    first = first->next;
+    delete first;
+  } else if ( p != NULL) {
+    q->next = p->next;
+    delete p;
+  }
+}
+
+void Delete(index pos)
+{
+  if ( first == NULL) return;
+  if ( pos <= 0 || pos >= count(first)) return;
+  struct Node *q, *p ;
+  p = q = first;
+  if ( pos == 0) {
+    first = first->next;
+    delete first;
+  } else {
+    for ( int i = 0; i < pos-1;i++) {
+      q = p;
+      p = p->next;
+    }
+    q->next = p->next;
+    delete p;
+  }
+}
+
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

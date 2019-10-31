@@ -95,6 +95,21 @@ int Rmax(struct Node *p)
   return max;
 }
 
+struct Node * search (struct Node *p, int key)
+{
+  while(p) 
+  {
+    if (p->data == key ) return p;
+    p = p->next;
+  }
+  return NULL;
+}
+struct Node *Rsearch(struct Node *p, int key)
+{
+  if (p==NULL) return NULL;
+  if(p->data = key) return p;
+  return Rsearch(p->next);
+}
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

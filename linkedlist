@@ -42,6 +42,39 @@ void Rdisplay(struct Node *P)
   }
 }
 
+int count(struct Node *P)
+{
+  int c = 0;
+  while (P) 
+  {
+    c++;
+    P = P->next;
+  }
+  return c;
+}
+int Rcount(struct Node *P)
+{
+  if (!P) return 0;
+  return 1 + Rcount(P->next);
+}
+
+int sum(struct Node *P)
+{
+  int sum = 0;
+  while (P)
+  {
+    sum += P->data;
+    P = P->next;
+  }
+  return sum;
+}
+
+int Rsum(struct Node *P)
+{
+  if (P == NULL) return 0;
+  return P->data + Rsum(P->next);
+}
+  
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

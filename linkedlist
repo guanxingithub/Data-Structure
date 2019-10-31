@@ -104,6 +104,26 @@ struct Node * search (struct Node *p, int key)
   }
   return NULL;
 }
+
+struct Node * Lsearch(struct Node *p, int key)
+{
+  if (p == NULL) return NULL;
+  if ( p->data == key) return p;
+  struct Node *q = NULL;
+  p = p->next;
+  while ( p ) {
+    if ( p->data == key) {
+      q->next = p->next;
+      p->next = first;
+      first = p;
+      return p;
+    } else {
+      q = p;
+      p  = p->next;
+    }
+  }
+  return NULL;
+}
 struct Node *Rsearch(struct Node *p, int key)
 {
   if (p==NULL) return NULL;

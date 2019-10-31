@@ -107,10 +107,8 @@ struct Node * search (struct Node *p, int key)
 
 struct Node * Lsearch(struct Node *p, int key)
 {
-  if (p == NULL) return NULL;
-  if ( p->data == key) return p;
-  struct Node *q = NULL;
-  p = p->next;
+  if ( p == NULL ) return NULL;
+  struct Node *q = p;
   while ( p ) {
     if ( p->data == key) {
       q->next = p->next;

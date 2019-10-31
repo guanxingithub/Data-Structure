@@ -233,6 +233,23 @@ void Delete(index pos)
   }
 }
 
+void RemoveDuplicate(struct Node *p)
+{
+  struct Node *q;
+  if (!p) return;
+  q = p->next;
+  while(q) {
+    if (p->data == q->data) {
+      p->next = q->next;
+      delete q;
+      q = p->next;
+    } else {
+      p = p->next;
+      q = q->next;
+    }
+  }
+}
+
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

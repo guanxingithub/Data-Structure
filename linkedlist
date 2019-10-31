@@ -33,6 +33,15 @@ void display(struct Node *P)
     P= P->next;
  }
 }
+void Rdisplay(struct Node *P)
+{
+  while (P != NULL) 
+  {
+    printf("%d ", P->data);
+    Rdisplay(P->next);
+  }
+}
+
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

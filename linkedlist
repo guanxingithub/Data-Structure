@@ -250,6 +250,28 @@ void RemoveDuplicate(struct Node *p)
   }
 }
 
+void Reverse(struct Node *p)
+{
+  struct Node *q, *r;
+  q = r = NULL;
+  while(p) {
+    r = q;
+    q = p;
+    p = p->next;
+    q->next = r;
+  }
+  first = q;
+}
+
+void RReverse(struct Node *q, struct Node *p)
+{
+  while (p) {
+    RReverse(p,p->next);
+    p->next = q;
+ }
+ first = q;
+}
+
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

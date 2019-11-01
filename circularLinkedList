@@ -1,0 +1,28 @@
+void Display()
+
+{
+  struct Node *p;
+  p = head->next;
+  
+  do {
+    printf("%d ", p->data);
+    p = p->next;
+  } while ( p != head);
+  
+  while ( p) {
+    printf("%d ", p->data);
+    p = p->next;
+    if ( p == head ) break;
+  }
+}
+
+void Display(struct Node *p)
+{
+  static bool first = 0;
+  if ( p != head || first == 0 ) {
+    first = 1;
+    printf("%d ", p->data);
+    Display(p->next);
+  }
+  first = 0;
+}

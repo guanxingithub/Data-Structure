@@ -277,23 +277,66 @@ void ReverseByElements(struct Node *p)
   int n = count(p);
   int *A;
   A = (int *)malloc(sizeof(int) * n);
+  struct Node *q = p;
   int i = 0;
-  while (p) 
+  while (q) 
   {
-    A[i++] = p->data;
-    p = p->next;
+    A[i++] = q->data;
+    q = q->next;
   }
+  q = p;
   i--;
-  while (p)
+  while (q)
   {
-    p->data = A[i--];
-    p = p->next;
+    q->data = A[i--];
+    q = q->next;
   }
 } // this is not the good one
   // 1. if the data is very large, this method needs a lot of memory
   // 2. in the real project, these data could be used somewhere else, so if the data is changed, 
   //that will produce the reverse effect
-    
+struct Node * Concatenate(struct Node *p1, struct Node *p2)
+{
+  struct Node *p = p1;
+  while(p1 && p1->next) 
+    p1 = p1->next;
+  p1->next = p2;
+  return p;
+}
+
+struct Node * MergeSorted(struct Node *p1, struct Node *p2)
+{
+  struct Node *q, *last;
+  
+  if (p1 == NULL) return p2;
+  if (p2 == NULL_ return p1;
+  if ( p1->data < p2->data) {
+    q = last = p1;
+    p1 = p1->next;
+    last->next = NULL;
+  } else {
+    q = last = p2;
+    p2 = p2->next;
+    last->next = NULL;
+  }
+  while ( p1 && p2) {
+    if (p1->data < p2->data) {
+      last->next = p1;
+      last = p1;
+      p1 = p1->next;
+      last->next = NULL;
+    } else {
+      last->next = p2;
+      last = p2;
+      p2 = p2->next;
+      last->next = NULL;
+    }
+  }
+  if ( p1 ) last->next = p1;
+  if ( p2 ) last->next = p2;
+  return q;
+}
+
 int main() 
 {
   int A[] = {1, 2, 3, 4, 5};

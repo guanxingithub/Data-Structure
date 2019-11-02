@@ -46,11 +46,12 @@ void Display(struct Node*p)
 }
 int Length(struct Node *p)
 {
+   if ( !p ) return 0;
    int len = 0;
-   while (p) {
-     len++;
-     p = p->next;
-   }
+   do {
+    p = p->next;
+    len++
+   } while (p != Head);
    return len;
 }
 
@@ -107,5 +108,37 @@ void Insert(int index, int x)
   }
 }
       
-    
+void Delete(struct Node *p, int index )
+{
+   if (index < 1 || index > length(p) || p == NULL) return ;
+   struct Node *t;
+   if ( index == 1 ) {
+   // delete the Head
+     t = Head;
+     while ( t->next != Head) {
+       t = t->next;
+     }    
+     x = Head->data;
+     if ( t == Head) {
+       free(Head);
+       Head = NULL;
+     }
+     t->next = Head->next;
+     free(Head);
+     Head = t->next;
+   } else {
+      p = Head;
+      for (int i = 1; i < index-1; i++) {
+       p = p->next;
+      }
+      t = p->next;
+      p->next = t->next;
+      t->next = NULL;
+      x = t->data;
+      free(t);
+   }
+ }
+ return x;
+ }
+     
   

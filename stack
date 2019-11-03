@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct stack
+{
+  int size;
+  int top;
+  int *A;
+}
+void push(struct stack *s, int x)
+{
+  if ( !isFull())
+    s->A[++top] = x;
+} 
+bool isFull(struct stack *s)
+{
+  if ( s->top == s->size-1) return true;
+  return false;
+}
+
+bool is Empty(struct stack *s)
+{
+  if ( s->top == -1 ) return true;
+  return false;
+}
+
+int pop(struct stack *s)
+{
+  if ( !isEmpty()) 
+    return s->A[top--];
+}
+int peak(struct stack *st, int pos)
+{
+  x = -1;
+  if ( top+1-pos >=0 ) 
+    x = st->A[top+1-pos];
+  return x;
+}
+  
+int main()
+{
+  struct stack * s = (struct stack *) malloc(sizeof(struct stack));
+  printf("Enter the size of stack\n");
+  scanf("%d", &s->size);
+  
+  s->A = (int *) malloc(sizeof(int) * s->size);
+  s->top = -1;
+  return 1;
+}

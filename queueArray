@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
+struct Queue{
+  int data;
+  int front;
+  int rear;
+  int *Q;
+};
+
+void create(struct Queue *q) 
+{
+   printf("Enter the size of the queue\n");
+   scanf("%d", &q->size);
+   q->Q = (int *) malloc(sizeof(int) * q->size);
+   q->front = q->rear = -1;
+}
+void Display(struct Queue q)
+
+{
+  int i = q.front + 1;
+  for ( ; i <=q.rear; i++) {
+    printf("%d ", q->Q[i]);
+  }
+  printf("\n");
+}
+void Enqueue(struct Queue *q, int x)
+{
+  if ( q->size-1 == q->rear ) return;
+  q->rear++;
+  q->Q[q->rear] = x;
+}
+
+int Dequeue(struct Queue *q)
+
+{
+  int x = -1;
+  if ( q->front == q->rear ) 
+    printf("Empty queue\n");
+  else {
+    q->front++;
+    x = q->Q[q->front];
+  }
+  return x;
+}
+
+class Queue
+{
+private:
+  int size;
+  int front;
+  int rear;
+  int *Q;
+public:
+  Queue(int size) {
+    this->size = size;
+    front = rear = -1;
+    Q = new int[size] ;
+  }
+  ~Queue() {
+    if ( Q )
+      delet [] Q;
+  }
+  
+  void display();
+  void Enqueue(int x);
+  int Dequeue();
+}
+
+struct CQ
+{
+  int size;
+  int front;
+  int rear;
+  int *Q;
+}
+void create(struct CQ * cq, int size)
+{
+  cq->size = size;
+  front = rear = 0;
+  cq->Q = (int *) malloc(sizeof(int)*cq->size);
+}
+void Enqueue(struct CQ *cq, int x)
+{
+  if ( (cq->rear + 1)%cq->size == cq->front) 
+    printf("Full\n");
+  else  {
+    cq->rear = (cq->rear) % cq->size;
+    cq->Q[cq->rear] = x;
+  }
+}
+
+int Dequeue(struct CQ *cq)
+{
+  if ( cq->front == cq->rear) 
+    printf("Empty\n");
+  else {
+    cq->front = (cq->front+1) % cq->size;
+    x = cq->Q[cq->front];
+  }
+  return x;
+}
+void Display(struct CQ q)
+{
+  int i = (q.front + 1)%q.size;
+  do {
+    printf("%d ", q.Q[i];
+    i = (i+1)%q.size();
+  } while ( i != (q.rear + 1)%q.size);
+  printf("\n");
+}
+
+void Queue::Enqueue(int x)
+{
+  if ( rear = size-1) return;
+  rear++;
+  Q[rear] = x;
+}
+int Queue::Dequeue()
+{
+  int x = -1;
+  if ( front == rear ) {
+    printf("Empty queue\n");
+  } else {
+    front++;
+    x = Q[front];
+  }
+  return x;
+}
+    
+int main()
+{
+  struct Queue q;
+  create(&q);
+  

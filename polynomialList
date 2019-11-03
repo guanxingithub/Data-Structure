@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node 
+{
+  int coef;
+  int exp;
+  struct Node *next;
+} * first = NULL;
+
+double Evaluate(struct Node *p, double x)
+{
+  struct Node *q;
+  q = p;
+  double sum = 0;
+  while (q ) {
+    sum += q->coef * pow(x, q->exp);
+    q = q->next;
+  }
+  return sum;
+}
+
+struct Node *Add(struct Node *p1, struct Node *p2)
+{
+  struct Node *sum, *t, *last;
+  
+  if (!p1 ) return p2;
+  if (!p2) return p1;
+  if ( p1->exp < p2->exp) {
+    sum = p2;
+    p2 = p2->next;
+  } else if (p1->exp > p2->exp) {
+    sum = p1;
+    p1 = p1->next;
+  } else {
+    t = (struct Node *) malloc(sizeof(struct Node));
+    t->exp = p1->exp;
+    t->coef = p1->coef + p2->coef;
+    t->next;
+    p1 = p1->next;
+    p2 = p2->next;
+    sum = t;
+  }
+  last = sum;
+  while(p1 && p2) {
+    if ( p1->exp < p2->exp ) {
+      last->next = p2;
+      last = p2;
+      p2 = p2->next;
+    } else if ( p1->exp > p2->exp) {
+      last->next = p1;
+      last = p1;
+      p1 = p1->next;
+    } else {
+      t = (struct Node *) malloc(sizeof(struct Node));
+      t->coef = p1->coef + p2->coef;
+      t->exp = p1->exp;
+      t->next = NULL;
+      last->next = t;
+      last = t;
+      p1 = p1->next;
+      p2 = p2->next;
+    }
+  }
+  while(p1) {
+    last->next = p1;
+  }
+  while(p2) {
+    last->next = p2;
+  }
+  return sum;
+}
+
+void create()
+{
+  struct Node *t, *last=NULL;
+  int num;
+  printf("Enter number of terms\n");
+  scanf("%d", &num);
+  printf("Enter terms\n");
+  
+  for(int i = 0; i < num; i++) {
+    t = (struct Node *) malloc(sizeof(struct Node));
+    scanf("%d%d", &t->coef, &t->exp);
+    t->next = NULL;
+    if ( i == 0 ) {
+      first = t;
+      last = t;  
+    } else {
+      last->next = t;
+      last = t;
+    }
+  }
+}
+void Display(struct Node *p)
+{
+  while (p ) {
+    printf("%d x^ %d +", p->coef, p->exp);
+    p->p->next;
+  }
+  printf("\n");
+}

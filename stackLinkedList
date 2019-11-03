@@ -93,6 +93,29 @@ void Stack::Display()
   }
   cout << endl;
 }
+
+char * convert(char *infix)
+{
+  char *post = (char *) malloc(sizeof(char) * (strlen(infix) + 1));
+  Stack stk;
+  int i = 0; j = 0;
+  while (infix[i] != '\0') {
+    if(isOperand(infix[i]) ) {
+      post[j++] = infix[i++];
+    } else {
+      if ( stk.isEmpty() || preference(infix[i]) > preference(stk.top()) {
+        stk.push(infix[i++]);
+      } else {
+        post[j++] = stk.pop();
+      }
+    }
+  }
+  while( !stk.isEmpty()){
+    post[j++] = stk.pop();
+  }
+  post[j] = '\0';
+  return post;
+}
 int main()
 {
   Stack stk;

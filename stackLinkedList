@@ -89,6 +89,7 @@ void Stack::Display()
   Node *t = top;
   while(t) {
     cout << t->data << " ";
+    t = t->next;
   }
   cout << endl;
 }

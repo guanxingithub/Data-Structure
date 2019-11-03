@@ -61,7 +61,7 @@ public:
 
 void Stack::push(int x)
 {
-  Stack * t = nex Stack();
+  Node * t = nex Stack();
   if ( !t ) {
     cout << "Stack is full"
   } else {
@@ -72,7 +72,7 @@ void Stack::push(int x)
 }
 int Stack::pop()
 {
-  Stack *t;
+  Node *t;
   int x = -1;
   if (!top) {
     cout << "Stack is empty\n";
@@ -86,7 +86,7 @@ int Stack::pop()
 }
 void Stack::Display()
 {
-  Stack *t = top;
+  Node *t = top;
   while(t) {
     cout << t->data << " ";
   }

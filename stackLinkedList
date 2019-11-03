@@ -116,6 +116,42 @@ char * convert(char *infix)
   post[j] = '\0';
   return post;
 }
+
+int Eval(char * post)
+{
+  Stack stk;
+  int val = 0;
+  int i = 0;
+  int right, left, res;
+  while (post[i] != '\0') {
+    if ( isOperand(post[i]) ) {
+      stk.push(post[i++]);
+    } else {
+      right = stk.pop();
+      left = stk.pop();
+      switch(post[i]) {
+        case('+'):
+          res = left + right;
+          break;
+        case('-'):
+          res = left - right;
+          break;
+        case('*'):
+          res = left * right;
+          break;
+        case('/'):
+          res = left / right;
+          break;
+        default:
+          break;
+      }
+      stk.push(res);
+      i++;
+    }
+  } 
+  return stk.top();
+ } 
+    
 int main()
 {
   Stack stk;

@@ -110,5 +110,56 @@ int  Delete(struct Node *p, int index)
    }
  }
        
-     
-     
+ struct Node *findMiddle1(struct Node *p)
+ {
+   int n = length(p);
+   struct Node *q = p;
+   for (int i = 0; i < n/2; i++)
+     q = q->next;
+   }
+   return q;
+ }
+ struct Node *findMiddle2(struct Node *p)
+ {
+   struct Node *q;
+   p = q = first;
+   while (q ) {
+     q = q->next;
+     if (q) q = q->next;
+     if (q) p = p->next;
+   }
+   return p;
+ }
+ struct Node *findMiddle3(struct Node *p)
+ {
+   stack<struct Node*> s;
+   while (p) {
+     s.push(p);
+     p = p->next;
+   }
+   n = s.size();
+   for ( i = 0; i < n/2; i++) {
+     s.pop();
+   }
+   return s.top();
+ }
+ struct Node *Intersection(struct Node *list1, struct Node *list2)
+ {
+   stack<struct Node *> s1, s2;
+   struct Node *p;
+   p = list1;
+   while (p) {
+     s1.push(p);
+     p = p->next;
+  }
+  p = list2;
+  while (p) {
+    s2.push(p);
+    p = p->next;
+  }
+  while ( s1.top() == s2.top() ) {
+    p = s1.pop();
+    s2.pop();
+  }
+  return p;
+}

@@ -93,3 +93,13 @@ void Stack::Display()
   }
   cout << endl;
 }
+int main()
+{
+  Stack stk;
+  stk.push(1);
+  stk.push(2);
+  stk.pop();
+  stk.pop();
+  stk.Display();
+  return 1;
+}

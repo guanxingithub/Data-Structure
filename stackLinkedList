@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Stack
+{
+  int data;
+  struct Stack *next;
+} * Top = NULL;
+
+void push(int x)
+{
+  struct Stack *t = (struct Stack *) malloc(sizeof(Struct Stack));
+  if (!t ) return;
+  t->data = x;
+  t->next = Top;
+  Top = t;
+}
+int pop() 
+{
+  x = -1;
+  struct Stack *t;
+  if ( !isEmpty(st) ) {
+    t = Top;
+    Top = Top->next;
+    x = t->data;
+    free(t);
+  }
+  return x;
+}
+int peak(int pos) 
+{
+  struct Stack *t;
+  t = Top;
+  for ( int i = 0; i < pos-1 && t; i++) {
+    t = t->next;
+  }
+  if ( t ) {
+    return t->data;
+  } else {
+    return -1;
+  }
+}
+class Node
+{
+public:
+  int data;
+  Node *next;
+}
+using namespace std;
+class Stack
+{
+private:
+  Node * top;
+public:
+  Stack() { top = NULL; }
+  ~Stack() {};
+  void push(int x);
+  int pop();
+  void Display();
+}
+
+void Stack::push(int x)
+{
+  Stack * t = nex Stack();
+  if ( !t ) {
+    cout << "Stack is full"
+  } else {
+    t->data = x;
+    t->next = top;
+    top = t;
+  }
+}
+int Stack::pop()
+{
+  Stack *t;
+  int x = -1;
+  if (!top) {
+    cout << "Stack is empty\n";
+  } else {
+    t = top;
+    top = top->next;
+    x = t->data;
+    delete t;
+  }
+  return x;
+}
+void Stack::Display()
+{
+  Stack *t = top;
+  while(t) {
+    cout << t->data << " ";
+  }
+  cout << endl;
+}

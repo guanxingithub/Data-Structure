@@ -119,27 +119,27 @@ char * convert(char *infix)
 
 int Eval(char * post)
 {
-  Stack stk;
+  Stack<int> stk;
   int val = 0;
   int i = 0;
   int right, left, res;
   while (post[i] != '\0') {
     if ( isOperand(post[i]) ) {
-      stk.push(post[i++]);
+      stk.push(post[i++]-'0');
     } else {
       right = stk.pop();
       left = stk.pop();
       switch(post[i]) {
-        case('+'):
+        case '+':
           res = left + right;
           break;
-        case('-'):
+        case '-' :
           res = left - right;
           break;
-        case('*'):
+        case '*':
           res = left * right;
           break;
-        case('/'):
+        case '/':
           res = left / right;
           break;
         default:

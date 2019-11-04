@@ -1,0 +1,247 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int isEmpty(struct Queue q)
+{
+  return q.front == q.rear;
+}
+struct Node
+{
+   struct Node *lchild;
+   int data;
+   struct Node *rchild;
+}
+
+struct Queue
+{
+  int size;
+  int front;
+  int rear;
+  Node **Q;
+}
+
+void create(struct Queue *q, int size)
+{
+  q->size = size;
+  q->front = q->rear = 0;
+  q->Q = (struct Node **)malloc(q->size * sizeof(struct Node *));
+}
+
+void enqueue(struct Queue *q, Node * x)
+{
+  if ( (q->rear + 1 ) % q->size == q->front) {
+    printf("Queue is full\n");
+  } else {
+    q->rear = (q->rear + 1 ) % q->size;
+    q->Q[q->rear] = x;
+ }
+ 
+ Node * dequeue(struct Queue *q)
+ {
+   Node * x = NULL;
+   if ( q->front == q->rear ) {
+     printf("The queue is empty\n");
+   } else {
+     q->front = (q->front + 1 ) % q->size;
+     x = q->Q[q->front];
+   }
+ }
+
+struct Node *root = NULL;
+void create() {
+  int x;
+  struct Node *p, t;
+  struct Queue q;
+  create(&q, 100);
+  printf("Enter root value ");
+  scanf("%d", &x);
+  root = (struct Node *) malloc(sizeof(struct Node));
+  root->data = x;
+  root->lchild = NULL;
+  root->rchild = NULL;
+  enqueue(&q, root);
+  while ( !isEmpty(q)) {
+    p = dequeue(&q);
+    printf("Enter left child ");
+    scanf("%d", &x);
+    if ( x!= -1 ) {
+      t = (struct Node *) malloc(sizefo(struct Node));
+      printf("Enter the child value ");
+      scanf("%d ", &x);
+      t->data = x;
+      t->lchild= t->rchild = NULL;
+      p->lchild = t;
+      enqueue(&q, t);
+    }
+    printf("Enter right child ");
+    scanf("%d", &x);
+    if ( x!= -1 ) {
+      t = (struct Node *) malloc(sizefo(struct Node));
+      printf("Enter the child value ");
+      scanf("%d ", &x);
+      t->data = x;
+      t->lchild= t->rchild = NULL;
+      p->rchild = t;
+      enqueue(&q, t);
+    }
+  }
+}
+void preorder(struct Node *p)
+{
+  if ( p ) {
+    printf("%d ", Node->data);
+    preorder(p->lchild);
+    preorder(p->rchild);
+  }
+}
+void inorder(struct Node *p)
+{
+  if (p ) {
+    inorder(p->lchild);
+    print("%d ", p->data);
+    inordre(p->rchild);
+  }
+}
+void postorder(struct Node *p)
+{ 
+  if (p) {
+    postorder(p->lchild);
+    postorder(p->rchild);
+    printf("%d ", p->data);
+  }
+}
+
+int main() {
+  void
+}
+
+classs Queue
+{
+private:
+  int front;
+  int rear;
+  int size;
+  Node **Q;
+public:
+  Queue() {
+    this->size = 10;
+    front = rear = 0;
+    Q = new Node*[this->size];
+  }
+  }
+  Queue(int size) {
+    this->size = size;
+    front = rear = 0;
+    Q = new Node*[this->size];
+  }
+  ~Queue() {
+    delete [] Q;
+  }
+  void enqueue(Node *x);
+  Node *dequeue();
+  void diaplay();
+}
+
+class Node
+{
+  Node *lchild;
+  int data;
+  Node *rchild;
+}
+
+class Tree
+{
+public:
+  Node *root;
+  Tree() { root = NULL;}
+  void create();
+  void PreOrder(Node *p);
+  void PostOrder(Node *p);
+  void InOrder(Node *p);
+  void LevelOrder(Node *p);
+  void Height(Node *p);
+}
+
+void Tree::Height(Node *p)
+{
+  int x = 0, y = 0;
+  if (p == 0 ) return 0;
+  x = Height(p->lchild);
+  y = Height(p->rchild);
+  if ( x > y) 
+    return x+1;
+  else 
+    return y + 1;
+}
+
+void Tree:LevelOrder(struct Node *p)
+{
+  Queue q(100);
+  q.enqueue(p);
+  struct Node *t;
+  
+  while(!q.isEmpty()) {
+    t = q.dequeue();
+    if ( t->lchild ) 
+    {
+      print("%d ", t->lchild->data);
+      q.enqueue(t->lchild);
+    }
+    if ( t->rchild)
+    {
+      print("%d ", t->rchild->data);
+      q.enqueue(t->rchild);
+    }
+  }
+}
+
+void PreOrder(struct Node *q)
+{
+  struct stack st;
+  // stack<int> st; std library
+  
+  while ( q!= NULL || st.isEmpty() ) {
+    if (q ) {
+      printf("%d ", q->data);
+      st.push(q);
+      q = q->lchild;
+    } else {
+      q = st.pop();
+      q = q->rchild;
+    }
+  }
+  void InOrder(struct Node *q)
+  {
+    stack<Node *> st;
+    while ( q || !st.isEmpty()) {
+      if ( q ) {
+        st.push(q);
+        q = q->lchild;
+      } else {
+        q = st.pop();
+        printf("d ", q->data);
+        q = q->rchild;
+      }
+   }
+   void PostOrder(struct Node *q)
+   {
+     stack<Node *> st;
+     long temp;
+     while( q ) {
+       if( q) {
+         st.push(q);
+         q = q->lchild;
+       } else {
+         temp = st.dequeue();
+         if ( temp > 0) {
+           st.enqueue(-temp);
+           q = temp->rchild;
+         } else {
+           printf("%d ", (struct Node *)(-temp)->data);
+           q = st.dequeue();
+         }
+}
+
+int main() {
+  int 1;
+ }

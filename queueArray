@@ -128,6 +128,84 @@ int Queue::Dequeue()
   }
   return x;
 }
+
+struct Node
+{
+  int data;
+  struct Node *next;
+} *front = NULL, *rear = NULL;
+
+void Enqueue(int x)
+{
+  struct *t = (struct *) malloc(sizeof(struct Node));
+  if ( t == NULL) {
+    printf("Queue is full\n");
+  } else {
+    t->data = x;
+    t->next = NULL;
+    if ( front == NULL) {
+      front = rear = t;
+    } else {
+      rear->next = t;
+      rear = t;
+    }
+  }
+}
+
+int Dequeue()
+{
+  int x = -1;
+  struct Node *t;
+  if ( front == NULL) {
+    printf("Empty Queue\n");
+  } else {
+    t = front;
+    front = front->next;
+    x = t->data;
+    free(t);
+  }
+  return x;
+}
+
+void Display()
+{
+  struct Node *p;
+  p = front;
+  while (p) {
+    printf("%d ", p->data);
+    p = p->next;
+  }
+  printf("\n");
+}
+
+struct QS
+{
+  stack<int> s1;
+  stack<int> s2;
+} * Top;
+
+void enqueue(int x)
+{
+  s1.push(x);
+}
+
+int dequeue()
+{
+  int x = -1;
+  if ( s2.isEmpty()) {
+    if ( s1.isEmpty() ) {
+       printf("Empty Queue\n");
+    } else {
+      while( !s1.isEmpty()) {
+        s2.push(s1.pop());
+      }
+      x = s2.pop();
+    }
+  } else {
+    x = s2.pop();
+  }
+  return x;
+}
     
 int main()
 {
